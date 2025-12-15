@@ -1,202 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="800" height="1200" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
-  <!-- 背景：宣纸纹理效果 -->
+  <!-- 定义单色调色板 -->
   <defs>
-    <filter id="paperTexture" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="3" result="turbulence"/>
-      <feColorMatrix type="saturate" values="0.1"/>
-      <feBlend in="SourceGraphic" in2="turbulence" mode="multiply" opacity="0.15"/>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F7F3"/>
+      <stop offset="100%" stop-color="#F0EDE6"/>
+    </linearGradient>
+    
+    <filter id="subtleTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" in2="noise" mode="soft-light" opacity="0.1"/>
     </filter>
-    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3A5F40" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#2C4B2F" stop-opacity="0.7"/>
-    </linearGradient>
-    <linearGradient id="teaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8CA38B"/>
-      <stop offset="100%" stop-color="#6B8C6A"/>
-    </linearGradient>
   </defs>
   
-  <!-- 基底：宣纸底色与纹理 -->
-  <rect width="800" height="1200" fill="#F5F1E8" filter="url(#paperTexture)"/>
+  <!-- 背景：极浅米色渐变 -->
+  <rect width="800" height="1200" fill="url(#bgGradient)" filter="url(#subtleTexture)"/>
   
-  <!-- 抽象山形：水墨笔触感 -->
-  <g id="abstract-mountains">
-    <!-- 远山：淡墨晕染 -->
-    <path d="M-50,400 Q200,380 350,350 Q500,320 650,350 Q800,380 850,400 L850,800 L-50,800 Z" 
-          fill="#8CA38B" opacity="0.2"/>
+  <!-- 山体：精细线条描绘 -->
+  <g id="detailed-mountains" opacity="0.9">
+    <!-- 山形轮廓 -->
+    <path d="M150,400 L320,220 L490,400 L490,750 L150,750 Z" fill="none" stroke="#2C4B2F" stroke-width="2"/>
     
-    <!-- 中山：飞白笔触 -->
-    <path d="M100,450 C200,300 400,280 550,350 C700,420 750,500 700,600 L700,800 L100,800 Z" 
-          fill="url(#mountainGrad)" opacity="0.8"/>
-    
-    <!-- 山脊线：枯笔飞白 -->
-    <path d="M150,500 Q300,450 450,500" 
-          stroke="#2C4B2F" stroke-width="1.5" fill="none" stroke-dasharray="1,8" opacity="0.6"/>
-    <path d="M300,550 Q400,500 550,550" 
-          stroke="#2C4B2F" stroke-width="1" fill="none" stroke-dasharray="1,10" opacity="0.4"/>
-  </g>
-  
-  <!-- 抽象茶叶：点线构成 -->
-  <g id="abstract-tea">
-    <!-- 茶叶群1：左侧律动 -->
-    <g transform="translate(150, 300)">
-      <ellipse cx="0" cy="0" rx="12" ry="25" fill="#3A5F40" opacity="0.7" transform="rotate(30)"/>
-      <ellipse cx="40" cy="-20" rx="8" ry="18" fill="#3A5F40" opacity="0.6" transform="rotate(-15)"/>
-      <ellipse cx="-30" cy="40" rx="10" ry="22" fill="#3A5F40" opacity="0.5" transform="rotate(45)"/>
-      <!-- 连接线 -->
-      <path d="M0,0 Q20,-10 40,-20" stroke="#3A5F40" stroke-width="0.8" fill="none" opacity="0.3"/>
-      <path d="M0,0 Q-15,25 -30,40" stroke="#3A5F40" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <!-- 山体肌理线（密集细线） -->
+    <g stroke="#3A5F40" stroke-width="0.5" opacity="0.4">
+      <!-- 左侧山坡纹理 -->
+      <line x1="200" y1="400" x2="180" y2="600"/>
+      <line x1="230" y1="420" x2="210" y2="620"/>
+      <line x1="260" y1="440" x2="240" y2="640"/>
+      <line x1="290" y1="460" x2="270" y2="660"/>
+      
+      <!-- 右侧山坡纹理 -->
+      <line x1="360" y1="400" x2="380" y2="600"/>
+      <line x1="390" y1="420" x2="410" y2="620"/>
+      <line x1="420" y1="440" x2="440" y2="640"/>
+      <line x1="450" y1="460" x2="470" y2="660"/>
     </g>
     
-    <!-- 茶叶群2：右侧飘散 -->
-    <g transform="translate(600, 250)">
-      <ellipse cx="0" cy="0" rx="9" ry="20" fill="#8CA38B" opacity="0.6" transform="rotate(-20)"/>
-      <ellipse cx="35" cy="25" rx="6" ry="15" fill="#8CA38B" opacity="0.5" transform="rotate(10)"/>
-      <ellipse cx="-25" cy="-15" rx="7" ry="17" fill="#8CA38B" opacity="0.4" transform="rotate(40)"/>
+    <!-- 山脊线：粗细变化 -->
+    <path d="M320,220 L320,750" stroke="#2C4B2F" stroke-width="1.2" stroke-dasharray="1,0"/>
+    <path d="M280,300 L360,300" stroke="#2C4B2F" stroke-width="0.8" opacity="0.6"/>
+    <path d="M260,450 L380,450" stroke="#2C4B2F" stroke-width="0.6" opacity="0.5"/>
+  </g>
+  
+  <!-- 茶叶：精细脉络刻画 -->
+  <g id="detailed-tea-leaves">
+    <!-- 茶叶1：完整脉络 -->
+    <g transform="translate(200, 280)">
+      <ellipse cx="0" cy="0" rx="14" ry="28" fill="none" stroke="#3A5F40" stroke-width="1.2"/>
+      <!-- 主叶脉 -->
+      <line x1="0" y1="-28" x2="0" y2="28" stroke="#2C4B2F" stroke-width="0.8"/>
+      <!-- 侧脉 -->
+      <path d="M0,-20 Q8,-15 10,-10" stroke="#3A5F40" stroke-width="0.4"/>
+      <path d="M0,-15 Q10,-8 12,-5" stroke="#3A5F40" stroke-width="0.4"/>
+      <path d="M0,10 Q9,15 11,18" stroke="#3A5F40" stroke-width="0.4"/>
+      <path d="M0,20 Q-8,22 -10,25" stroke="#3A5F40" stroke-width="0.4"/>
     </g>
     
-    <!-- 茶叶轨迹线 -->
-    <path d="M100,350 Q250,250 400,280 Q550,310 700,250" 
-          stroke="#3A5F40" stroke-width="0.5" fill="none" stroke-dasharray="2,6" opacity="0.2"/>
-  </g>
-  
-  <!-- 抽象茶具：极简几何 -->
-  <g id="abstract-teaset" transform="translate(600, 700)">
-    <!-- 茶壶：三角与圆构成 -->
-    <circle cx="0" cy="0" r="35" stroke="#C17C54" stroke-width="3" fill="none" opacity="0.8"/>
-    <path d="M-25,0 L0,-40 L25,0 Z" stroke="#C17C54" stroke-width="2" fill="none" opacity="0.8"/>
-    <line x1="-15" y1="-10" x2="-40" y2="-15" stroke="#C17C54" stroke-width="1.5" opacity="0.6"/>
+    <!-- 茶叶2：半展开 -->
+    <g transform="translate(350, 240)">
+      <path d="M0,0 Q15,-10 0,-25 Q-15,-10 0,0 Z" fill="none" stroke="#3A5F40" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="-25" stroke="#2C4B2F" stroke-width="0.6"/>
+      <path d="M0,-10 Q5,-8 7,-5" stroke="#3A5F40" stroke-width="0.3"/>
+      <path d="M0,-15 Q-6,-12 -8,-8" stroke="#3A5F40" stroke-width="0.3"/>
+    </g>
     
-    <!-- 茶杯：半圆与线 -->
-    <circle cx="80" cy="20" r="15" stroke="#C17C54" stroke-width="2" fill="none" opacity="0.7"/>
-    <line x1="65" y1="20" x2="95" y2="20" stroke="#C17C54" stroke-width="2" opacity="0.7"/>
+    <!-- 茶叶3：卷曲新芽 -->
+    <g transform="translate(500, 320)">
+      <path d="M0,0 Q10,5 5,15 Q0,25 -5,15 Q-10,5 0,0" fill="none" stroke="#3A5F40" stroke-width="1"/>
+      <path d="M0,5 Q3,8 2,12" stroke="#2C4B2F" stroke-width="0.5"/>
+    </g>
     
-    <!-- 茶汤涟漪：同心圆 -->
-    <circle cx="0" cy="0" r="10" stroke="#C17C54" stroke-width="1" fill="none" opacity="0.5"/>
-    <circle cx="0" cy="0" r="5" stroke="#C17C54" stroke-width="1" fill="none" opacity="0.7"/>
+    <!-- 茶叶4：背面（浅色） -->
+    <g transform="translate(600, 280)" opacity="0.6">
+      <ellipse cx="0" cy="0" rx="12" ry="24" fill="none" stroke="#8CA38B" stroke-width="0.8"/>
+      <line x1="0" y1="-24" x2="0" y2="24" stroke="#8CA38B" stroke-width="0.5"/>
+    </g>
   </g>
   
-  <!-- 抽象水波纹：书法笔触 -->
-  <g id="abstract-water" opacity="0.3">
-    <path d="M100,800 C250,780 350,790 450,800 S600,810 700,800" 
-          stroke="#8CA38B" stroke-width="3" fill="none" stroke-dasharray="15,5"/>
-    <path d="M50,830 C200,815 300,820 400,830 S550,840 650,830" 
-          stroke="#8CA38B" stroke-width="2" fill="none" stroke-dasharray="10,8"/>
+  <!-- 茶具：精细线描 -->
+  <g id="detailed-tea-set" transform="translate(550, 650)">
+    <!-- 茶壶 -->
+    <g>
+      <!-- 壶身 -->
+      <path d="M-25,0 Q-25,-30 0,-30 Q25,-30 25,0 Q25,30 0,30 Q-25,30 -25,0" 
+            fill="none" stroke="#2C4B2F" stroke-width="1.5"/>
+      <!-- 壶盖 -->
+      <ellipse cx="0" cy="-30" rx="20" ry="6" fill="none" stroke="#2C4B2F" stroke-width="1.2"/>
+      <!-- 壶嘴 -->
+      <path d="M25,0 Q40,-10 45,-5" fill="none" stroke="#2C4B2F" stroke-width="1.2"/>
+      <!-- 壶把 -->
+      <path d="M-25,0 Q-40,-15 -35,-25" fill="none" stroke="#2C4B2F" stroke-width="1.2"/>
+      <!-- 盖钮 -->
+      <circle cx="0" cy="-30" r="3" fill="none" stroke="#2C4B2F" stroke-width="1"/>
+    </g>
+    
+    <!-- 茶杯1 -->
+    <g transform="translate(-60, 50)">
+      <path d="M-12,0 Q-12,-20 0,-20 Q12,-20 12,0 L12,25 Q12,35 0,35 Q-12,35 -12,25 Z" 
+            fill="none" stroke="#3A5F40" stroke-width="1.2"/>
+      <!-- 茶汤 -->
+      <ellipse cx="0" cy="10" rx="10" ry="3" fill="#8CA38B" opacity="0.3"/>
+    </g>
+    
+    <!-- 茶杯2 -->
+    <g transform="translate(40, 60)">
+      <path d="M-10,0 Q-10,-18 0,-18 Q10,-18 10,0 L10,22 Q10,30 0,30 Q-10,30 -10,22 Z" 
+            fill="none" stroke="#3A5F40" stroke-width="1"/>
+    </g>
+    
+    <!-- 茶盘纹理 -->
+    <g opacity="0.2">
+      <circle cx="0" cy="80" r="50" fill="none" stroke="#8CA38B" stroke-width="0.5"/>
+      <circle cx="0" cy="80" r="35" fill="none" stroke="#8CA38B" stroke-width="0.5" stroke-dasharray="3,3"/>
+    </g>
   </g>
   
-  <!-- 艺术排版：文字作为设计元素 -->
-  <g id="art-typography">
-    <!-- 主标题：大字留白 -->
-    <text x="100" y="180" font-family="'STKaiti', 'Microsoft YaHei', serif" 
-          font-size="80" font-weight="bold" fill="#3A5F40" opacity="0.9" letter-spacing="5">
-      西山茶
+  <!-- 云雾：细腻线条 -->
+  <g id="detailed-clouds" opacity="0.3">
+    <path d="M100,350 Q250,330 400,340 Q550,350 700,330" 
+          fill="none" stroke="#8CA38B" stroke-width="1.5" stroke-dasharray="8,6"/>
+    <path d="M150,450 Q300,430 450,440 Q600,450 750,430" 
+          fill="none" stroke="#8CA38B" stroke-width="1" stroke-dasharray="5,8"/>
+  </g>
+  
+  <!-- 水波纹：细腻同心纹 -->
+  <g id="detailed-water" transform="translate(0, 800)" opacity="0.4">
+    <path d="M100,0 Q300,-15 500,0 Q700,15 900,0" fill="none" stroke="#8CA38B" stroke-width="1.2"/>
+    <path d="M50,30 Q250,10 450,30 Q650,50 850,30" fill="none" stroke="#8CA38B" stroke-width="0.8"/>
+    <path d="M0,60 Q200,35 400,60 Q600,85 800,60" fill="none" stroke="#8CA38B" stroke-width="0.5"/>
+  </g>
+  
+  <!-- 文字：精致排版 -->
+  <g id="refined-typography">
+    <!-- 主标题：纤细字体 -->
+    <text x="120" y="150" font-family="'Noto Serif SC', serif" font-size="56" 
+          font-weight="300" fill="#2C4B2F" letter-spacing="2">
+      桂平西山茶
     </text>
     
-    <!-- 英文衬线：点缀 -->
-    <text x="100" y="240" font-family="Georgia, serif" font-size="18" 
-          fill="#8CA38B" letter-spacing="8" opacity="0.6">
+    <!-- 英文衬线 -->
+    <text x="120" y="190" font-family="'Playfair Display', serif" font-size="16" 
+          fill="#8CA38B" letter-spacing="6" opacity="0.7">
       XISHAN TEA
     </text>
     
-    <!-- 特征词：散点分布 -->
-    <g id="feature-words">
-      <text x="650" y="150" font-family="'STKaiti', serif" font-size="36" 
-            fill="#C17C54" transform="rotate(-10 650 150)" opacity="0.8">
-        嫩
+    <!-- 特征描述：细线分隔 -->
+    <g transform="translate(120, 250)">
+      <line x1="0" y1="0" x2="300" y2="0" stroke="#8CA38B" stroke-width="0.5" opacity="0.4"/>
+      <text x="0" y="30" font-family="'Noto Sans SC', sans-serif" font-size="20" 
+            fill="#3A5F40" font-weight="300">
+        云雾滋养 · 千年茶韵
       </text>
-      <text x="680" y="200" font-family="'STKaiti', serif" font-size="32" 
-            fill="#8CA38B" transform="rotate(5 680 200)" opacity="0.7">
-        翠
+      <line x1="0" y1="50" x2="250" y2="50" stroke="#8CA38B" stroke-width="0.3" opacity="0.4"/>
+    </g>
+    
+    <!-- 正文：多栏细排版 -->
+    <g transform="translate(120, 350)">
+      <text x="0" y="0" font-family="'Noto Serif SC', serif" font-size="17" 
+            fill="#555" line-height="1.8" font-weight="300">
+        <tspan x="0" dy="0">西山茶始于唐代，得名于桂平西山，</tspan>
+        <tspan x="0" dy="28">常年云雾缭绕，露水滋润，</tspan>
+        <tspan x="0" dy="28">故茶叶质地柔软，色泽翠绿。</tspan>
       </text>
-      <text x="620" y="250" font-family="'STKaiti', serif" font-size="34" 
-            fill="#3A5F40" transform="rotate(-5 620 250)" opacity="0.8">
-        香
-      </text>
-      <text x="670" y="300" font-family="'STKaiti', serif" font-size="30" 
-            fill="#C17C54" transform="rotate(15 670 300)" opacity="0.6">
-        醇
+      
+      <text x="0" y="140" font-family="'Noto Serif SC', serif" font-size="15" 
+            fill="#666" line-height="1.8" font-weight="300">
+        <tspan x="0" dy="0">传统手工采摘，一芽一叶，</tspan>
+        <tspan x="0" dy="25">经萎凋、杀青、揉捻、干燥，</tspan>
+        <tspan x="0" dy="25">完整保留茶叶天然风味。</tspan>
       </text>
     </g>
     
-    <!-- 诗句：竖排书法 -->
-    <text x="700" y="400" font-family="'STKaiti', serif" font-size="24" 
-          fill="#2C4B2F" text-anchor="end" writing-mode="tb" opacity="0.7">
-      <tspan x="700" dy="0">云</tspan>
-      <tspan x="700" dy="40">雾</tspan>
-      <tspan x="700" dy="40">滋</tspan>
-      <tspan x="700" dy="40">千</tspan>
-      <tspan x="700" dy="40">年</tspan>
-      <tspan x="700" dy="40">韵</tspan>
-    </text>
-    
-    <!-- 描述文字：错落排列 -->
-    <g id="description-text" transform="translate(100, 350)">
-      <text x="0" y="0" font-family="'Microsoft YaHei', sans-serif" font-size="20" 
-            fill="#555" line-height="1.6">
-        <tspan x="0" dy="0">唐时西山已有茶，</tspan>
-        <tspan x="0" dy="30">汲黔江之润，</tspan>
-        <tspan x="0" dy="30">承云雾之滋。</tspan>
-      </text>
+    <!-- 品质标签：精致图标 -->
+    <g transform="translate(500, 150)">
+      <circle cx="0" cy="0" r="2" fill="#3A5F40"/>
+      <text x="8" y="3" font-family="'Noto Sans SC', sans-serif" font-size="14" 
+            fill="#2C4B2F" font-weight="300">形秀</text>
       
-      <text x="0" y="130" font-family="'Microsoft YaHei', sans-serif" font-size="16" 
-            fill="#777" line-height="1.8">
-        <tspan x="0" dy="0">叶形秀美，色泽翠绿，</tspan>
-        <tspan x="0" dy="25">香气清高，滋味鲜爽。</tspan>
-        <tspan x="0" dy="25">手工采摘，传统工艺，</tspan>
-        <tspan x="0" dy="25">自然之馈赠，匠人之心。</tspan>
+      <circle cx="70" cy="0" r="2" fill="#3A5F40"/>
+      <text x="78" y="3" font-family="'Noto Sans SC', sans-serif" font-size="14" 
+            fill="#2C4B2F" font-weight="300">色翠</text>
+      
+      <circle cx="140" cy="0" r="2" fill="#3A5F40"/>
+      <text x="148" y="3" font-family="'Noto Sans SC', sans-serif" font-size="14" 
+            fill="#2C4B2F" font-weight="300">香高</text>
+      
+      <circle cx="210" cy="0" r="2" fill="#3A5F40"/>
+      <text x="218" y="3" font-family="'Noto Sans SC', sans-serif" font-size="14" 
+            fill="#2C4B2F" font-weight="300">味醇</text>
+    </g>
+    
+    <!-- 工艺说明：底部细线排版 -->
+    <g transform="translate(120, 1000)">
+      <line x1="0" y1="0" x2="500" y2="0" stroke="#8CA38B" stroke-width="0.5" opacity="0.3"/>
+      <text x="0" y="30" font-family="'Noto Sans SC', sans-serif" font-size="14" 
+            fill="#777" letter-spacing="1">
+        <tspan fill="#3A5F40">手工采摘</tspan> · 传统炒制 · 
+        <tspan fill="#3A5F40">炭火烘焙</tspan> · 自然陈化 · 
+        <tspan fill="#3A5F40">西山产区</tspan>
       </text>
     </g>
     
-    <!-- 落款：印章效果 -->
-    <g id="signature" transform="translate(100, 1000)">
-      <!-- 印章边框 -->
-      <rect x="0" y="0" width="120" height="60" fill="#C17C54" opacity="0.9" rx="2"/>
-      <!-- 印章文字 -->
-      <text x="60" y="40" font-family="'STKaiti', serif" font-size="26" 
-            fill="#F5F1E8" text-anchor="middle" font-weight="bold">
-        桂平·西山
-      </text>
-      <!-- 印章破损效果 -->
-      <rect x="5" y="5" width="110" height="50" fill="none" stroke="#F5F1E8" 
-            stroke-width="0.5" stroke-dasharray="3,2" opacity="0.3"/>
-    </g>
-    
-    <!-- 工艺标签：现代感排列 -->
-    <g id="craft-tags" transform="translate(400, 1000)">
-      <rect x="0" y="0" width="30" height="30" fill="#C17C54" opacity="0.2" rx="15"/>
-      <text x="15" y="19" font-family="Arial, sans-serif" font-size="14" 
-            fill="#C17C54" text-anchor="middle" font-weight="bold">H</text>
-      
-      <rect x="50" y="0" width="30" height="30" fill="#8CA38B" opacity="0.2" rx="15"/>
-      <text x="65" y="19" font-family="Arial, sans-serif" font-size="14" 
-            fill="#8CA38B" text-anchor="middle" font-weight="bold">C</text>
-      
-      <rect x="100" y="0" width="30" height="30" fill="#3A5F40" opacity="0.2" rx="15"/>
-      <text x="115" y="19" font-family="Arial, sans-serif" font-size="14" 
-            fill="#3A5F40" text-anchor="middle" font-weight="bold">D</text>
-      
-      <text x="0" y="50" font-family="'Microsoft YaHei', sans-serif" font-size="12" 
-            fill="#777" text-anchor="start">
-        <tspan x="0" dy="0">手工采</tspan>
-        <tspan x="50" dy="0">传统制</tspan>
-        <tspan x="100" dy="0">自然韵</tspan>
+    <!-- 印章：极简版本 -->
+    <g transform="translate(600, 1000)">
+      <rect x="0" y="0" width="80" height="40" fill="none" stroke="#2C4B2F" stroke-width="1"/>
+      <text x="40" y="26" font-family="'Noto Serif SC', serif" font-size="18" 
+            fill="#2C4B2F" text-anchor="middle" font-weight="400">
+        西山
       </text>
     </g>
   </g>
   
-  <!-- 装饰元素：散点与线条 -->
-  <g id="decorations">
-    <!-- 随机散点 -->
-    <circle cx="200" cy="600" r="1.5" fill="#C17C54" opacity="0.4"/>
-    <circle cx="350" cy="550" r="2" fill="#8CA38B" opacity="0.3"/>
-    <circle cx="500" cy="620" r="1" fill="#3A5F40" opacity="0.2"/>
-    <circle cx="650" cy="580" r="1.5" fill="#C17C54" opacity="0.4"/>
-    <circle cx="300" cy="680" r="1" fill="#8CA38B" opacity="0.3"/>
-    
-    <!-- 连接线：创造视觉流动 -->
-    <path d="M150,180 Q200,200 250,190" stroke="#3A5F40" stroke-width="0.5" fill="none" opacity="0.2"/>
-    <path d="M650,250 Q600,300 550,320" stroke="#8CA38B" stroke-width="0.5" fill="none" opacity="0.2"/>
-    <path d="M100,1000 Q300,950 500,980" stroke="#C17C54" stroke-width="0.8" fill="none" opacity="0.1"/>
+  <!-- 装饰细线：连接元素 -->
+  <g id="connector-lines" opacity="0.2">
+    <path d="M400,200 Q450,250 500,280" stroke="#8CA38B" stroke-width="0.3" fill="none"/>
+    <path d="M200,400 Q250,500 300,550" stroke="#8CA38B" stroke-width="0.3" fill="none"/>
+    <path d="M550,500 Q500,600 450,650" stroke="#8CA38B" stroke-width="0.3" fill="none"/>
   </g>
 </svg>
