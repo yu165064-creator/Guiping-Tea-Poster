@@ -1,120 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="800" height="1200" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
-  <!-- 背景与底色 -->
-  <rect width="800" height="1200" fill="#F8F5F0"/>
-  <rect x="0" y="800" width="800" height="400" fill="#E6E2D6"/>
+  <!-- 极简背景 -->
+  <defs>
+    <linearGradient id="minimalBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDFCF9"/>
+      <stop offset="100%" stop-color="#F8F6F0"/>
+    </linearGradient>
+    
+    <radialGradient id="spotlight" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#F8F6F0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
   
-  <!-- 层次1：远山与背景 -->
-  <g id="distant-mountains" opacity="0.4">
-    <path d="M-50,500 Q200,450 450,500 L450,800 L-50,800 Z" fill="#8CA38B"/>
-    <path d="M350,450 Q550,400 750,450 L750,800 L350,800 Z" fill="#8CA38B"/>
+  <!-- 纯净背景 -->
+  <rect width="800" height="1200" fill="url(#minimalBg)"/>
+  <rect width="800" height="1200" fill="url(#spotlight)"/>
+  
+  <!-- ====================== 意境远山：弯曲线条 ====================== -->
+  
+  <g id="distant-tea-mountains" opacity="0.2">
+    <!-- 最远山层（最淡） -->
+    <path d="M-50,700 
+             Q150,650 300,670 
+             Q500,690 650,660 
+             Q800,630 850,700 
+             L850,800 L-50,800 Z" 
+          fill="#8CA38B" opacity="0.15"/>
+    
+    <!-- 中间山层 -->
+    <path d="M-30,750 
+             C100,720 250,730 400,740 
+             C550,750 650,735 830,750 
+             L830,800 L-30,800 Z" 
+          fill="#3A5F40" opacity="0.1"/>
+    
+    <!-- 最近山层（稍深，露山脚） -->
+    <path d="M0,780 
+             Q200,760 350,770 
+             Q550,780 700,765 
+             Q800,750 800,780 
+             L800,800 L0,800 Z" 
+          fill="#2C4B2F" opacity="0.08"/>
+    
+    <!-- 山脊曲线（纤细线条） -->
+    <path d="M100,730 Q300,710 500,720 Q700,730 750,710" 
+          stroke="#8CA38B" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M50,770 Q250,750 450,760 Q650,770 700,750" 
+          stroke="#8CA38B" stroke-width="0.5" fill="none" opacity="0.2"/>
   </g>
   
-  <!-- 层次2：中景山形与云雾 -->
-  <g id="main-mountains">
-    <!-- 主山体 -->
-    <path d="M100,350 L280,200 L460,350 L460,800 L100,800 Z" fill="#3A5F40" opacity="0.9"/>
-    <!-- 山体纹理 -->
-    <path d="M280,200 L280,800" stroke="#2C4B2F" stroke-width="1" stroke-dasharray="3,5" opacity="0.3"/>
-    <!-- 云雾带 -->
-    <path d="M150,300 Q280,280 400,300 T550,320" stroke="#8CA38B" stroke-width="3" fill="none" stroke-dasharray="8,6" opacity="0.6"/>
-    <path d="M180,400 Q300,380 420,400" stroke="#8CA38B" stroke-width="2" fill="none" stroke-dasharray="5,7" opacity="0.5"/>
+  <!-- ====================== 核心主体：放大茶叶组 ====================== -->
+  
+  <g id="main-tea-group" transform="translate(400, 450)">
+    <!-- 主茶叶：放大精细刻画 -->
+    <g id="main-tea-leaf" transform="scale(1.8)">
+      <!-- 叶形：自然弯曲 -->
+      <path d="M0,0 
+               C40,-70 80,-80 0,-120 
+               C-80,-80 -40,-70 0,0 Z" 
+            fill="#F8FBF6" stroke="#2C4B2F" stroke-width="2"/>
+      
+      <!-- 主叶脉：流畅曲线 -->
+      <path d="M0,0 C0,-20 0,-40 0,-60 C5,-80 0,-100 0,-120" 
+            stroke="#2C4B2F" stroke-width="1.5" fill="none"/>
+      
+      <!-- 侧脉：精细分支 -->
+      <g stroke="#3A5F40" stroke-width="0.8" opacity="0.7">
+        <path d="M0,-20 Q20,-25 30,-40"/>
+        <path d="M0,-30 Q-25,-35 -35,-50"/>
+        <path d="M0,-50 Q15,-55 25,-70"/>
+        <path d="M0,-60 Q-20,-65 -30,-80"/>
+        <path d="M0,-80 Q10,-85 18,-95"/>
+        <path d="M0,-90 Q-15,-95 -22,-105"/>
+      </g>
+      
+      <!-- 叶缘细节：微小锯齿 -->
+      <g stroke="#3A5F40" stroke-width="0.5" opacity="0.4">
+        <path d="M30,-40 Q25,-45 20,-50"/>
+        <path d="M-35,-50 Q-30,-55 -25,-60"/>
+        <path d="M25,-70 Q20,-75 15,-80"/>
+        <path d="M-30,-80 Q-25,-85 -20,-90"/>
+      </g>
+      
+      <!-- 叶柄：连接点 -->
+      <ellipse cx="0" cy="5" rx="3" ry="8" fill="#2C4B2F" opacity="0.8"/>
+    </g>
+    
+    <!-- 辅茶叶1：稍小，衬托 -->
+    <g transform="translate(-120, 80) scale(1.2)">
+      <path d="M0,0 C25,-40 45,-45 0,-65 C-45,-45 -25,-40 0,0 Z" 
+            fill="#F8FBF6" stroke="#3A5F40" stroke-width="1.5" opacity="0.9"/>
+      <path d="M0,0 Q0,-20 0,-35 Q5,-50 0,-65" 
+            stroke="#3A5F40" stroke-width="1" fill="none"/>
+    </g>
+    
+    <!-- 辅茶叶2：背面视角 -->
+    <g transform="translate(100, 60) scale(1.1) rotate(20)">
+      <ellipse cx="0" cy="0" rx="25" ry="45" 
+               fill="#F0F7ED" stroke="#8CA38B" stroke-width="1.2" opacity="0.8"/>
+      <line x1="0" y1="-45" x2="0" y2="45" stroke="#8CA38B" stroke-width="0.8" opacity="0.6"/>
+    </g>
+    
+    <!-- 茶芽：点缀 -->
+    <g opacity="0.7">
+      <circle cx="-80" cy="-40" r="4" fill="#3A5F40"/>
+      <circle cx="60" cy="-60" r="3" fill="#3A5F40"/>
+      <circle cx="-40" cy="-90" r="2.5" fill="#3A5F40"/>
+    </g>
+    
+    <!-- 光影效果：突出主体 -->
+    <ellipse cx="0" cy="-60" rx="100" ry="30" 
+             fill="url(#spotlight)" opacity="0.2" transform="rotate(-10)"/>
   </g>
   
-  <!-- 层次3：动态茶叶元素（散点分布） -->
-  <g id="floating-leaves">
-    <!-- 茶叶1-3：左侧飘散 -->
-    <ellipse cx="180" cy="280" rx="8" ry="16" fill="#3A5F40" opacity="0.9" transform="rotate(45 180 280)"/>
-    <ellipse cx="220" cy="230" rx="6" ry="12" fill="#3A5F40" opacity="0.8" transform="rotate(-15 220 230)"/>
-    <ellipse cx="140" cy="330" rx="10" ry="18" fill="#3A5F40" opacity="0.7" transform="rotate(60 140 330)"/>
+  <!-- ====================== 辅助元素：衬托主体 ====================== -->
+  
+  <!-- 飘散茶叶：引导视线 -->
+  <g id="floating-tea-leaves" opacity="0.6">
+    <g transform="translate(200, 300)">
+      <ellipse cx="0" cy="0" rx="8" ry="15" fill="#F8FBF6" stroke="#8CA38B" stroke-width="0.8"/>
+      <line x1="0" y1="-15" x2="0" y2="15" stroke="#8CA38B" stroke-width="0.5"/>
+    </g>
     
-    <!-- 茶叶4-6：右侧飘落 -->
-    <ellipse cx="520" cy="250" rx="9" ry="15" fill="#3A5F40" opacity="0.8" transform="rotate(10 520 250)"/>
-    <ellipse cx="580" cy="300" rx="7" ry="13" fill="#3A5F40" opacity="0.6" transform="rotate(-40 580 300)"/>
-    <ellipse cx="620" cy="180" rx="5" ry="10" fill="#3A5F40" opacity="0.5" transform="rotate(30 620 180)"/>
+    <g transform="translate(600, 350)">
+      <ellipse cx="0" cy="0" rx="6" ry="12" fill="#F8FBF6" stroke="#8CA38B" stroke-width="0.8" transform="rotate(30)"/>
+    </g>
     
-    <!-- 茶叶7-8：底部点缀 -->
-    <ellipse cx="350" cy="720" rx="12" ry="20" fill="#3A5F40" opacity="0.4" transform="rotate(-20 350 720)"/>
-    <ellipse cx="700" cy="680" rx="8" ry="14" fill="#3A5F40" opacity="0.3" transform="rotate(15 700 680)"/>
+    <g transform="translate(150, 500)">
+      <ellipse cx="0" cy="0" rx="5" ry="10" fill="#F8FBF6" stroke="#8CA38B" stroke-width="0.8" transform="rotate(-15)"/>
+    </g>
   </g>
   
-  <!-- 层次4：茶具组合（右下角焦点） -->
-  <g id="tea-set-group">
-    <!-- 茶盘底纹 -->
-    <ellipse cx="650" cy="700" rx="80" ry="30" fill="#C17C54" opacity="0.1"/>
+  <!-- 茶露水珠：增加生动感 -->
+  <g id="tea-dew" opacity="0.7">
+    <!-- 主茶叶上的露珠 -->
+    <g transform="translate(380, 350)">
+      <circle cx="0" cy="0" r="5" fill="#FFFFFF" opacity="0.9"/>
+      <circle cx="2" cy="-2" r="2" fill="#FFFFFF" opacity="0.6"/>
+    </g>
     
-    <!-- 茶壶 -->
-    <path d="M600,650 Q600,620 640,620 Q680,620 680,650 Q680,680 640,680 Q600,680 600,650" 
-          stroke="#3A5F40" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <ellipse cx="640" cy="620" rx="25" ry="8" stroke="#3A5F40" stroke-width="3" fill="none"/>
-    <path d="M640,620 L640,590 M610,640 L580,630" stroke="#3A5F40" stroke-width="2" stroke-linecap="round"/>
-    
+    <g transform="translate(420, 400)">
+      <circle cx="0" cy="0" r="4" fill="#FFFFFF" opacity="0.8"/>
+      <circle cx="1" cy="-1" r="1.5" fill="#FFFFFF" opacity="0.5"/>
+    </g>
+  </g>
+  
+  <!-- 极简茶具：微小点缀 -->
+  <g id="minimal-tea-set" transform="translate(650, 800)" opacity="0.4">
+    <!-- 茶壶轮廓 -->
+    <ellipse cx="0" cy="0" rx="15" ry="20" fill="none" stroke="#8CA38B" stroke-width="1"/>
+    <!-- 壶嘴 -->
+    <path d="M15,0 Q25,-5 30,0" stroke="#8CA38B" stroke-width="0.8" fill="none"/>
     <!-- 茶杯 -->
-    <path d="M560,700 Q560,680 580,680 Q600,680 600,700 L600,720 Q600,740 580,740 Q560,740 560,720 Z" 
-          stroke="#3A5F40" stroke-width="2" fill="none"/>
-    <path d="M690,690 Q690,670 710,670 Q730,670 730,690 L730,710 Q730,730 710,730 Q690,730 690,710 Z" 
-          stroke="#3A5F40" stroke-width="2" fill="none"/>
-    
-    <!-- 茶汤涟漪 -->
-    <circle cx="580" cy="710" r="4" fill="#C17C54" opacity="0.7"/>
-    <circle cx="710" cy="700" r="3" fill="#C17C54" opacity="0.7"/>
-    
-    <!-- 热气飘散 -->
-    <path d="M640,590 Q645,550 650,530" stroke="#C17C54" stroke-width="1.5" fill="none" stroke-dasharray="2,3" opacity="0.6"/>
-    <path d="M635,585 Q640,540 655,500" stroke="#C17C54" stroke-width="1" fill="none" stroke-dasharray="2,4" opacity="0.4"/>
+    <ellipse cx="40" cy="10" rx="8" ry="12" fill="none" stroke="#8CA38B" stroke-width="0.8"/>
   </g>
   
-  <!-- 层次5：水波纹（底部衔接） -->
-  <g id="water-ripples" opacity="0.3">
-    <path d="M0,800 Q200,790 400,800 T800,790" stroke="#8CA38B" stroke-width="2" fill="none"/>
-    <path d="M50,820 Q250,810 450,820 T750,810" stroke="#8CA38B" stroke-width="1.5" fill="none"/>
+  <!-- 水汽：极淡氛围 -->
+  <g id="steam" opacity="0.15">
+    <path d="M650,780 Q640,750 630,720 Q620,690 610,660" 
+          stroke="#8CA38B" stroke-width="1" fill="none" stroke-dasharray="2,4"/>
+    <path d="M660,770 Q650,740 640,710 Q630,680 620,650" 
+          stroke="#8CA38B" stroke-width="0.8" fill="none" stroke-dasharray="3,3"/>
   </g>
   
-  <!-- 层次6：文字信息（现代排版） -->
-  <g id="typography">
-    <!-- 主标题（左上角） -->
-    <text x="80" y="120" font-family="'Microsoft YaHei', sans-serif" font-size="52" font-weight="bold" fill="#3A5F40">
+  <!-- ====================== 文字排版：不干扰主体 ====================== -->
+  
+  <g id="unobtrusive-typography">
+    <!-- 主标题：顶部，纤细 -->
+    <text x="400" y="180" font-family="'Noto Serif SC', serif" 
+          font-size="62" font-weight="300" fill="#2C4B2F" text-anchor="middle" letter-spacing="2">
       桂平西山茶
     </text>
     
-    <!-- 英文副标题 -->
-    <text x="80" y="160" font-family="Arial, sans-serif" font-size="18" fill="#8CA38B" letter-spacing="2">
-      GUIPING XISHAN TEA
+    <!-- 英文副标：极细 -->
+    <text x="400" y="220" font-family="'Georgia', serif" 
+          font-size="16" fill="#8CA38B" text-anchor="middle" letter-spacing="6" opacity="0.7">
+      GUIPING · XISHAN TEA
     </text>
     
-    <!-- 特征标签（右侧竖排） -->
-    <text x="680" y="150" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#C17C54" text-anchor="end">
-      <tspan x="680" dy="0">嫩 · 翠</tspan>
-      <tspan x="680" dy="30">香 · 鲜</tspan>
-      <tspan x="680" dy="30">形美 · 味醇</tspan>
-    </text>
-    
-    <!-- 核心描述（左侧） -->
-    <text x="80" y="220" font-family="'Microsoft YaHei', sans-serif" font-size="24" fill="#3A5F40" font-weight="500">
-      云雾滋养 · 千年茶韵
-    </text>
-    
-    <!-- 详细说明（右下方现代排版） -->
-    <text x="80" y="280" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#555" line-height="1.8">
-      <tspan x="80" dy="0">始于唐代，产于广西桂平西山景区，</tspan>
-      <tspan x="80" dy="30">常年云雾缭绕，得黔江之润，</tspan>
-      <tspan x="80" dy="30">故茶叶嫩翠鲜香，为茶中上品。</tspan>
-    </text>
-    
-    <!-- 工艺特色（底部横排） -->
-    <text x="400" y="1000" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#3A5F40" text-anchor="middle">
-      <tspan fill="#C17C54">手工采摘</tspan> · 传统炒制 · <tspan fill="#C17C54">炭火烘焙</tspan> · 自然陈化
-    </text>
-    
-    <!-- 印章（左下角，作为视觉平衡） -->
-    <g id="seal" transform="translate(100, 1000)">
-      <rect x="0" y="0" width="100" height="50" fill="#C17C54" opacity="0.9" rx="3"/>
-      <text x="50" y="32" font-family="'Microsoft YaHei', serif" font-size="22" fill="#F8F5F0" 
-            text-anchor="middle" font-weight="bold">西山茗品</text>
+    <!-- 核心特征：环绕主体 -->
+    <g id="feature-ring">
+      <text x="200" y="450" font-family="'Noto Sans SC', sans-serif" 
+            font-size="18" fill="#3A5F40" font-weight="300" text-anchor="end">
+        形秀
+      </text>
+      
+      <text x="600" y="450" font-family="'Noto Sans SC', sans-serif" 
+            font-size="18" fill="#3A5F40" font-weight="300">
+        色翠
+      </text>
+      
+      <text x="400" y="650" font-family="'Noto Sans SC', sans-serif" 
+            font-size="18" fill="#3A5F40" font-weight="300" text-anchor="middle">
+        香高
+      </text>
+      
+      <text x="400" y="350" font-family="'Noto Sans SC', sans-serif" 
+            font-size="18" fill="#3A5F40" font-weight="300" text-anchor="middle">
+        味醇
+      </text>
     </g>
     
-    <!-- 点缀线（连接元素） -->
-    <line x1="80" y1="180" x2="250" y2="180" stroke="#C17C54" stroke-width="1.5" stroke-dasharray="5,3"/>
-    <line x1="80" y1="240" x2="300" y2="240" stroke="#8CA38B" stroke-width="1" stroke-dasharray="3,3"/>
+    <!-- 描述文字：底部，细致 -->
+    <g transform="translate(400, 900)">
+      <text x="0" y="0" font-family="'Noto Serif SC', serif" 
+            font-size="20" fill="#2C4B2F" text-anchor="middle" font-weight="400">
+        云雾滋养 · 千年一叶
+      </text>
+      
+      <line x1="-100" y1="10" x2="100" y2="10" 
+            stroke="#8CA38B" stroke-width="0.5" opacity="0.4"/>
+      
+      <text x="0" y="50" font-family="'Noto Serif SC', serif" 
+            font-size="16" fill="#666" text-anchor="middle" line-height="1.8" font-weight="300">
+        <tspan x="0" dy="0">唐时始载于桂平西山，</tspan>
+        <tspan x="0" dy="28">山高雾重，露润土肥，</tspan>
+        <tspan x="0" dy="28">故得此嫩翠香醇之品。</tspan>
+      </text>
+    </g>
+    
+    <!-- 工艺说明：最底部 -->
+    <text x="400" y="1100" font-family="'Noto Sans SC', sans-serif" 
+          font-size="14" fill="#777" text-anchor="middle" letter-spacing="1">
+      手工采摘 · 传统炒制 · 炭火烘焙 · 西山核心产区
+    </text>
+    
+    <!-- 印章：右下角极简 -->
+    <g transform="translate(700, 1100)">
+      <rect x="0" y="0" width="70" height="35" 
+            fill="none" stroke="#8CA38B" stroke-width="1" opacity="0.5"/>
+      <text x="35" y="22" font-family="'Noto Serif SC', serif" 
+            font-size="16" fill="#8CA38B" text-anchor="middle" font-weight="400">
+        西山
+      </text>
+    </g>
+  </g>
+  
+  <!-- 视觉引导线（极淡，仅构图参考） -->
+  <g id="composition-guides" opacity="0.05">
+    <!-- 中心聚焦圆 -->
+    <circle cx="400" cy="450" r="200" fill="none" stroke="#8CA38B" stroke-width="0.5"/>
+    <!-- 对角线 -->
+    <line x1="100" y1="100" x2="700" y2="1100" stroke="#8CA38B" stroke-width="0.3"/>
   </g>
 </svg>
