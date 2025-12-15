@@ -1,35 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="800" height="1200" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
-<rect width="800" height="1200" fill="#E6E2D6"/>
-<path d="M100,300 L250,180 L400,300" fill="#8CA38B" opacity="0.7"/>
-<path d="M200,350 L350,220 L500,350" fill="#8CA38B" opacity="0.8"/>
-<path d="M300,400 L450,270 L600,400" fill="#3A5F40" opacity="0.9"/>
-<path d="M250,280 Q350,260 450,280" stroke="#8CA38B" fill="none" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
-<path d="M320,330 Q400,310 500,330" stroke="#8CA38B" fill="none" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
-<ellipse cx="280" cy="250" rx="15" ry="25" fill="#3A5F40" transform="rotate(30 280 250)"/>
-<ellipse cx="380" cy="220" rx="12" ry="20" fill="#3A5F40" transform="rotate(-15 380 220)"/>
-<ellipse cx="480" cy="280" rx="18" ry="28" fill="#3A5F40" transform="rotate(10 480 280)"/>
-<ellipse cx="350" cy="350" rx="14" ry="22" fill="#3A5F40" transform="rotate(-30 350 350)"/>
-<path d="M400,550 Q400,500 450,500 Q500,500 500,550 Q500,600 450,600 Q400,600 400,550" stroke="#3A5F40" fill="none" stroke-width="3"/>
-<path d="M450,500 L450,450 M420,550 L380,540" stroke="#3A5F40" stroke-width="3" fill="none"/>
-<ellipse cx="450" cy="450" rx="25" ry="8" stroke="#3A5F40" fill="none" stroke-width="3"/>
-<path d="M300,650 Q300,620 330,620 Q360,620 360,650 L360,680 Q360,700 330,700 Q300,700 300,680 Z" stroke="#3A5F40" fill="none" stroke-width="3"/>
-<path d="M500,650 Q500,620 530,620 Q560,620 560,650 L560,680 Q560,700 530,700 Q500,700 500,680 Z" stroke="#3A5F40" fill="none" stroke-width="3"/>
-<path d="M450,450 Q460,400 470,380" stroke="#C17C54" fill="none" stroke-width="2" stroke-dasharray="3,3" opacity="0.7"/>
-<path d="M455,445 Q465,390 480,360" stroke="#C17C54" fill="none" stroke-width="2" stroke-dasharray="3,3" opacity="0.7"/>
-<path d="M460,440 Q470,380 490,340" stroke="#C17C54" fill="none" stroke-width="2" stroke-dasharray="3,3" opacity="0.7"/>
-<path d="M200,380 Q400,400 600,380" stroke="#8CA38B" fill="none" stroke-width="2" opacity="0.5"/>
-<path d="M180,400 Q400,430 620,400" stroke="#8CA38B" fill="none" stroke-width="2" opacity="0.5"/>
-<text x="400" y="450" text-anchor="middle" font-family="Arial" font-size="48" font-weight="bold" fill="#3A5F40">桂平西山茶</text>
-<text x="400" y="510" text-anchor="middle" font-family="Arial" font-size="24" fill="#8CA38B">云雾滋养 千年茶韵</text>
-<text x="400" y="780" text-anchor="middle" font-family="Arial" font-size="20" fill="#3A5F40">
-<tspan x="400" dy="0">西山茶始于唐代，</tspan>
-<tspan x="400" dy="30">产于桂平西山景区，</tspan>
-<tspan x="400" dy="30">以嫩、翠、香、鲜著称。</tspan></text>
-<line x1="200" y1="850" x2="600" y2="850" stroke="#C17C54" stroke-width="2" stroke-dasharray="10,5"/>
-<text x="400" y="900" text-anchor="middle" font-family="Arial" font-size="18" fill="#3A5F40">
-<tspan x="400" dy="0">产地：广西桂平西山</tspan>
-<tspan x="400" dy="30">工艺：手工采摘·传统炒制</tspan>
-<tspan x="400" dy="30">特点：形美、色绿、味醇、香高</tspan></text>
-<rect x="650" y="1000" width="120" height="60" fill="#C17C54" opacity="0.9" rx="5"/>
-<text x="710" y="1035" text-anchor="middle" font-family="Arial" font-size="28" fill="#E6E2D6" font-weight="bold">西山</text>
+  <!-- 背景与底色 -->
+  <rect width="800" height="1200" fill="#F8F5F0"/>
+  <rect x="0" y="800" width="800" height="400" fill="#E6E2D6"/>
+  
+  <!-- 层次1：远山与背景 -->
+  <g id="distant-mountains" opacity="0.4">
+    <path d="M-50,500 Q200,450 450,500 L450,800 L-50,800 Z" fill="#8CA38B"/>
+    <path d="M350,450 Q550,400 750,450 L750,800 L350,800 Z" fill="#8CA38B"/>
+  </g>
+  
+  <!-- 层次2：中景山形与云雾 -->
+  <g id="main-mountains">
+    <!-- 主山体 -->
+    <path d="M100,350 L280,200 L460,350 L460,800 L100,800 Z" fill="#3A5F40" opacity="0.9"/>
+    <!-- 山体纹理 -->
+    <path d="M280,200 L280,800" stroke="#2C4B2F" stroke-width="1" stroke-dasharray="3,5" opacity="0.3"/>
+    <!-- 云雾带 -->
+    <path d="M150,300 Q280,280 400,300 T550,320" stroke="#8CA38B" stroke-width="3" fill="none" stroke-dasharray="8,6" opacity="0.6"/>
+    <path d="M180,400 Q300,380 420,400" stroke="#8CA38B" stroke-width="2" fill="none" stroke-dasharray="5,7" opacity="0.5"/>
+  </g>
+  
+  <!-- 层次3：动态茶叶元素（散点分布） -->
+  <g id="floating-leaves">
+    <!-- 茶叶1-3：左侧飘散 -->
+    <ellipse cx="180" cy="280" rx="8" ry="16" fill="#3A5F40" opacity="0.9" transform="rotate(45 180 280)"/>
+    <ellipse cx="220" cy="230" rx="6" ry="12" fill="#3A5F40" opacity="0.8" transform="rotate(-15 220 230)"/>
+    <ellipse cx="140" cy="330" rx="10" ry="18" fill="#3A5F40" opacity="0.7" transform="rotate(60 140 330)"/>
+    
+    <!-- 茶叶4-6：右侧飘落 -->
+    <ellipse cx="520" cy="250" rx="9" ry="15" fill="#3A5F40" opacity="0.8" transform="rotate(10 520 250)"/>
+    <ellipse cx="580" cy="300" rx="7" ry="13" fill="#3A5F40" opacity="0.6" transform="rotate(-40 580 300)"/>
+    <ellipse cx="620" cy="180" rx="5" ry="10" fill="#3A5F40" opacity="0.5" transform="rotate(30 620 180)"/>
+    
+    <!-- 茶叶7-8：底部点缀 -->
+    <ellipse cx="350" cy="720" rx="12" ry="20" fill="#3A5F40" opacity="0.4" transform="rotate(-20 350 720)"/>
+    <ellipse cx="700" cy="680" rx="8" ry="14" fill="#3A5F40" opacity="0.3" transform="rotate(15 700 680)"/>
+  </g>
+  
+  <!-- 层次4：茶具组合（右下角焦点） -->
+  <g id="tea-set-group">
+    <!-- 茶盘底纹 -->
+    <ellipse cx="650" cy="700" rx="80" ry="30" fill="#C17C54" opacity="0.1"/>
+    
+    <!-- 茶壶 -->
+    <path d="M600,650 Q600,620 640,620 Q680,620 680,650 Q680,680 640,680 Q600,680 600,650" 
+          stroke="#3A5F40" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="640" cy="620" rx="25" ry="8" stroke="#3A5F40" stroke-width="3" fill="none"/>
+    <path d="M640,620 L640,590 M610,640 L580,630" stroke="#3A5F40" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- 茶杯 -->
+    <path d="M560,700 Q560,680 580,680 Q600,680 600,700 L600,720 Q600,740 580,740 Q560,740 560,720 Z" 
+          stroke="#3A5F40" stroke-width="2" fill="none"/>
+    <path d="M690,690 Q690,670 710,670 Q730,670 730,690 L730,710 Q730,730 710,730 Q690,730 690,710 Z" 
+          stroke="#3A5F40" stroke-width="2" fill="none"/>
+    
+    <!-- 茶汤涟漪 -->
+    <circle cx="580" cy="710" r="4" fill="#C17C54" opacity="0.7"/>
+    <circle cx="710" cy="700" r="3" fill="#C17C54" opacity="0.7"/>
+    
+    <!-- 热气飘散 -->
+    <path d="M640,590 Q645,550 650,530" stroke="#C17C54" stroke-width="1.5" fill="none" stroke-dasharray="2,3" opacity="0.6"/>
+    <path d="M635,585 Q640,540 655,500" stroke="#C17C54" stroke-width="1" fill="none" stroke-dasharray="2,4" opacity="0.4"/>
+  </g>
+  
+  <!-- 层次5：水波纹（底部衔接） -->
+  <g id="water-ripples" opacity="0.3">
+    <path d="M0,800 Q200,790 400,800 T800,790" stroke="#8CA38B" stroke-width="2" fill="none"/>
+    <path d="M50,820 Q250,810 450,820 T750,810" stroke="#8CA38B" stroke-width="1.5" fill="none"/>
+  </g>
+  
+  <!-- 层次6：文字信息（现代排版） -->
+  <g id="typography">
+    <!-- 主标题（左上角） -->
+    <text x="80" y="120" font-family="'Microsoft YaHei', sans-serif" font-size="52" font-weight="bold" fill="#3A5F40">
+      桂平西山茶
+    </text>
+    
+    <!-- 英文副标题 -->
+    <text x="80" y="160" font-family="Arial, sans-serif" font-size="18" fill="#8CA38B" letter-spacing="2">
+      GUIPING XISHAN TEA
+    </text>
+    
+    <!-- 特征标签（右侧竖排） -->
+    <text x="680" y="150" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#C17C54" text-anchor="end">
+      <tspan x="680" dy="0">嫩 · 翠</tspan>
+      <tspan x="680" dy="30">香 · 鲜</tspan>
+      <tspan x="680" dy="30">形美 · 味醇</tspan>
+    </text>
+    
+    <!-- 核心描述（左侧） -->
+    <text x="80" y="220" font-family="'Microsoft YaHei', sans-serif" font-size="24" fill="#3A5F40" font-weight="500">
+      云雾滋养 · 千年茶韵
+    </text>
+    
+    <!-- 详细说明（右下方现代排版） -->
+    <text x="80" y="280" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#555" line-height="1.8">
+      <tspan x="80" dy="0">始于唐代，产于广西桂平西山景区，</tspan>
+      <tspan x="80" dy="30">常年云雾缭绕，得黔江之润，</tspan>
+      <tspan x="80" dy="30">故茶叶嫩翠鲜香，为茶中上品。</tspan>
+    </text>
+    
+    <!-- 工艺特色（底部横排） -->
+    <text x="400" y="1000" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#3A5F40" text-anchor="middle">
+      <tspan fill="#C17C54">手工采摘</tspan> · 传统炒制 · <tspan fill="#C17C54">炭火烘焙</tspan> · 自然陈化
+    </text>
+    
+    <!-- 印章（左下角，作为视觉平衡） -->
+    <g id="seal" transform="translate(100, 1000)">
+      <rect x="0" y="0" width="100" height="50" fill="#C17C54" opacity="0.9" rx="3"/>
+      <text x="50" y="32" font-family="'Microsoft YaHei', serif" font-size="22" fill="#F8F5F0" 
+            text-anchor="middle" font-weight="bold">西山茗品</text>
+    </g>
+    
+    <!-- 点缀线（连接元素） -->
+    <line x1="80" y1="180" x2="250" y2="180" stroke="#C17C54" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <line x1="80" y1="240" x2="300" y2="240" stroke="#8CA38B" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
 </svg>
